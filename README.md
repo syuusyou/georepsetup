@@ -45,7 +45,8 @@ Where, gv1 is Master Volume, fvm1 is Slave Host and gv2 is Slave Volume.
 
 1. Create Master and Slave Gluster Volumes
 2. Run `georepsetup` command and provide root password for the Slave host
-   georepsetup gv1 fvm1 gv2
+
+    georepsetup gv1 fvm1 gv2
 
 ## Setting up Geo-replication with Non-privilaged user in Slave
 
@@ -55,13 +56,16 @@ For non root Geo-replication, still some manual work. Will plan to simplify some
 2. Create a unprivileged account in all the Slave nodes. For example,  geoaccount. Add geoaccount as a member of geogroup group.
 3. As a root, create a new directory with permissions `0711`. Ensure that the location where this directory is created is writeable only by root but geoaccount is able to access it. For example, create a mountbroker-root directory at `/var/mountbroker-root`. 
 4.  Run the following commands in any one of the Slave node:
+
     gluster system:: execute mountbroker opt mountbroker-root /var/mountbroker-root
     gluster system:: execute mountbroker user geoaccount slavevol
     gluster system:: execute mountbroker opt geo-replication-log-group geogroup
     gluster system:: execute mountbroker opt rpc-auth-allow-insecure on
+
 5. Restart Glusterd on all Slave nodes
 6. Run `georepsetup` command and provide root password for the Slave host
-georepsetup gv1 geoaccount@fvm1 gv2
+
+    georepsetup gv1 geoaccount@fvm1 gv2
 
 
 ## Blogs
