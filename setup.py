@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
     georepsetup.setup.py
-    :copyright: (c) 2014 by Aravinda VK
+    :copyright: (c) 2015 by Aravinda VK
     :license: MIT, see LICENSE for more details.
 """
 

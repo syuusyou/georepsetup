@@ -1,4 +1,10 @@
-#!/usr/bin/python
+# -*- coding: utf-8 -*-
+"""
+    georepsetup.cli.py
+    :copyright: (c) 2015 by Aravinda VK
+    :license: MIT, see LICENSE for more details.
+"""
+
 from argparse import ArgumentParser, RawDescriptionHelpFormatter
 from contextlib import contextmanager
 import getpass
