@@ -212,7 +212,7 @@ def ssh_initialize(slavehost, passwd):
     ssh = paramiko.SSHClient()
     try:
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        ssh.connect("fvm1", username="root", password=passwd)
+        ssh.connect(slavehost, username="root", password=passwd)
         output_ok("SSH Connection established root@{}".format(slavehost))
     except paramiko.ssh_exception.AuthenticationException as e:
         output_notok("Unable to establish SSH connection "
