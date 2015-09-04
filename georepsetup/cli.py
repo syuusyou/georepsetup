@@ -200,9 +200,9 @@ def check_host_reachable(slavehost):
     Check if SSH port is open for given slavehost
     """
     if is_port_enabled(slavehost, 22):
-        output_ok("{} is Reachable(Port 22)".format(slavehost))
+        output_ok("{0} is Reachable(Port 22)".format(slavehost))
     else:
-        output_notok("{} is Not Reachable(Port 22)".format(slavehost))
+        output_notok("{0} is Not Reachable(Port 22)".format(slavehost))
 
 
 def ssh_initialize(slavehost, passwd):
@@ -213,10 +213,10 @@ def ssh_initialize(slavehost, passwd):
     try:
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh.connect(slavehost, username="root", password=passwd)
-        output_ok("SSH Connection established root@{}".format(slavehost))
+        output_ok("SSH Connection established root@{0}".format(slavehost))
     except paramiko.ssh_exception.AuthenticationException as e:
         output_notok("Unable to establish SSH connection "
-                     "to root@{}:\n{}".format(slavehost, e))
+                     "to root@{0}:\n{1}".format(slavehost, e))
 
     return ssh
 
@@ -243,7 +243,7 @@ def compare_gluster_versions(ssh):
     # Check for Version mismatch
     if master_version == slave_version:
         output_ok("Master Volume and Slave Volume are "
-                  "compatible (Version: {})".format(master_version))
+                  "compatible (Version: {0})".format(master_version))
     else:
         output_notok("Master Volume({0}) and Slave Volume({1}) "
                      "versions not Compatible".format(master_version,
@@ -343,7 +343,7 @@ def copy_to_main_slave_node(ssh, args, slavehost, georep_dir, pubfile):
             "{georep_dir}/{pubfile}".format(
                 georep_dir=georep_dir, pubfile=pubfile))
     ftp.close()
-    output_ok("common_secret.pem.pub file copied to {}".format(slavehost))
+    output_ok("common_secret.pem.pub file copied to {0}".format(slavehost))
 
 
 def distribute_to_all_slave_nodes(ssh, pubfile):
